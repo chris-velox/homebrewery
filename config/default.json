@@ -1,5 +1,5 @@
 {
-	"host" : "homebrewery.local.naturalcrit.com:8000",
+	"host" : "westyecksfiles:8444",
 	"naturalcrit_url" : "local.naturalcrit.com:8010",
 	"secret" : "secret"
 }
