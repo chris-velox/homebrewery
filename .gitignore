@@ -8,3 +8,5 @@ build/*
 config/local.*
 
 todo.md
+startDB.bat
+startMViewer.bat

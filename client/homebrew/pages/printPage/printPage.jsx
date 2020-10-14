@@ -1,7 +1,9 @@
+require('./printPage.less');
 const React = require('react');
 const createClass = require('create-react-class');
 const _     = require('lodash');
 const cx    = require('classnames');
+const { Meta } = require('vitreum/headtags');
 const Markdown = require('naturalcrit/markdown.js');
 
 const PrintPage = createClass({
@@ -42,6 +44,7 @@ const PrintPage = createClass({
 
 	render : function(){
 		return <div>
+			<Meta name='robots' content='noindex, nofollow' />
 			{this.renderPages()}
 		</div>;
 	}

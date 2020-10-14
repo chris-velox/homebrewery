@@ -1,5 +1,26 @@
 # changelog
 
+### Monday, 12/10/2020 - v2.10.1
+- Fixed issue with users unable to create new brews
+- Fixing brews being lost when loaded via back button
+
+### Wednesday, 07/10/2020 - v2.10.0
+- Google Drive integration -- Sign in with your Google account to link it with your Homebrewery profile. A new button in the Edit page will let you transfer your file to your personal Google Drive storage, and Google will keep a backup of each version! No more lost work surprises!
+
+### Friday, 28/08/2020 - v2.9.2
+- Many dependency updates
+- Finally fixed this changelog page to not run off the edge :P
+
+### Sunday, 19/07/2020 - v2.9.1
+- Fixed paragraphs appearing blank on new columns
+
+### Wednesday, 20/05/2020 - v2.9.0
+- Major refactoring of site backend to work with updated dependencies for security (should be invisible to users)
+
+### Wednesday, 11/03/2020 - v2.8.2
+- Fixed delete button removing everyone's copy for brews with multiple authors
+- Compressed homebrew text in database
+
 ### Monday, 26/11/2018 - v2.8.1
 - Fixed some SSL issues with images in the example page so they appear now
 - Fixed duplicate scrollbars in Edit Page
@@ -23,26 +44,26 @@
 ### Saturday, 22/04/2017 - v2.7.4
 - Give ability to hide the render warning notification
 
+```
+```
+
 ### Friday, 03/03/2017 - v2.7.3
 - Increasing the range on the Partial Page Rendering for a quick-fix for it getting out of sync on long brews.
+
+
 
 ### Saturday, 18/02/2017 - v2.7.2
 - Adding ability to delete a brew from the user page, incase the user creates a brew that makes the edit page unrender-able. (re:309)
 
-## BIG NEWS
-With the next major release of Homebrewery, v3.0.0, this tool *will no longer support raw HTML input for brew code*. Most issues and errors users are having are because of this feature and it's become too taxing to help and fix these issues.
 
-All brews made previous to the release of v3.0.0 will still render normally.
 
 ### Thursday, 19/01/2017 - v2.7.0
 - Fixed saving multiple authors and multiple systems on brew metadata (thanks u/PalaNolho re:282)
 - Adding in line highlight for new pages
 - Added in a simple brew lookup for admin
 
-
 ### Saturday, 14/01/2017 - v2.7.0
 - Added a new Render Warning overlay. It detects situations where the brew may not be rendering correctly (wrong browser, browser is zoomed in...) and let's the user know
-
 
 ### Sunday, 25/12/2016 - v2.7.0
 - Switching over to using Vitreum v4
@@ -56,8 +77,6 @@ All brews made previous to the release of v3.0.0 will still render normally.
 - Removed a lot of unused files in shared
 - vitreum v4 now lets me use codemirror as a pure node dependacy
 
-
-
 ### Saturday, 03/12/2016 - v2.6.0
 - Added report back to the edit page
 - Changed metaeditor icon
@@ -69,12 +88,10 @@ All brews made previous to the release of v3.0.0 will still render normally.
 - Added a table of contents snippet (thanks u/tullisar)
 - Added a multicolumn snippet
 
-
-
+\page
 ### Thursday, 01/12/2016
 - Added in a snippet for a split table
 - Added an account nav item to new page
-
 
 ### Sunday, 27/11/2016 - v2.5.1
 - Fixed the column rendering on the new user page. Really should have tested that better
@@ -90,7 +107,6 @@ All brews made previous to the release of v3.0.0 will still render normally.
 - Editing a brew in anyway while logged in will now add you to the list of authors
 - Added a new user page to see others published brews, as well as all of your own brews.
 - Added a new nav item for accessing your profile and logging in
-
 
 ### Monday, 14/11/2016
 - Updated snippet bar style
@@ -116,6 +132,8 @@ All brews made previous to the release of v3.0.0 will still render normally.
 - Fixed the noteblock overlapping into titles (thanks u/dsompura!)
 - Fixed a bad search route in the admin panel (thanks u/SnappyTom!)
 
+```
+```
 
 ### Friday, 29/07/2016 - v2.2.7
 - Adding in descriptive note blocks. (Thanks calculuschild!)
@@ -137,16 +155,16 @@ All brews made previous to the release of v3.0.0 will still render normally.
 - Added in a new auto-incremeting page number snippet (thakns u/Ryrok!)
 - Lists in monster stat blocks should be fixed now
 
-
 ### Saturday, 04/06/2016 - v2.2.0
 - MIgrating The Homebrewery over to hombrewery.naturalcrit.com. It know runs on it's own server, with it's own repo separate from the other tools I'm working on. Makes updating and deploying much easier.
-
-\page
 
 ### Sunday, 29/05/2016 - v2.1.0
 - Finally added a syntax for doing spell lists. A bit in-depth about why this took so long. Essentially I'm running out of syntax to use in stardard Markdown. There are too many unique elements in the PHB-style to be mapped. I solved this earlier by stacking certain elements together (eg. an `<hr>` before a `blockquote` turns it into moster state block), but those are getting unweildly. I would like to simply wrap these in `div`s with classes, but unfortunately Markdown stops processing when within HTML blocks. To get around this I wrote my own override to the Markdown parser and lexer to process Markdown within a simple div class wrapper. This should open the door for more unique syntaxes in the future. Big step!
 - Override Ctrl+P (and cmd+P) to launch to the print page. Many people try to just print either the editing or share page to get a PDF. While this dones;t make much sense, I do get a ton of issues about it. So now if you try to do this, it'll just bring you imediately to the print page. Everybody wins!
 - The onboarding flow has also been confusing a few users (Homepage -> new -> save -> edit page). If you edit the Homepage text now, a Call to Action to save your work will pop-up.
+
+\page
+
 - Added a 'Recently Edited' and 'Recently Viewed' nav item to the edit and share page respectively. Each will remember the last 8 items you edited or viewed and when you viewed it. Makes use of the new title attribute of brews to easy navigatation.
 - Paragraphs now indent properly after lists (thanks u/slitjen!)
 
@@ -166,8 +184,6 @@ All brews made previous to the release of v3.0.0 will still render normally.
 - No longer server-side pre-render brews, just incase the user entered invalid HTML, it might crahsh the server
 - Bumped up the allowed entity size for extra-large brew (Thanks for reporting it dickboner93)
 - Added a little error box when a save fails with a custom link to reporting the issue on github.
-
-\page
 
 ### Saturday, 14/05/2016 - v2.0.0 (finally!)
 
@@ -207,8 +223,6 @@ Massive changelog incoming:
 - Elements under the hood are way more organized and should behaviour much more reliably in many sizes.
 - Source now opens to it's own route `/source/:sharedId` instead of just a window. Now easier to share, and won't be blocked by some browsers.
 - Print page now auto-opens print dialog. If you want to share your print page link, just remove the `?dialog=true` parameter and it won't open the dialog.
-
-
 
 \page
 
@@ -277,4 +291,3 @@ Massive changelog incoming:
 * Added `phb.standalone.css` plus a build system for creating it
 * Added page numbers and footer text
 * Page accent now flips each page
-

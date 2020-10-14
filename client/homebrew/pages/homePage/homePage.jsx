@@ -1,12 +1,13 @@
+require('./homePage.less');
 const React = require('react');
 const createClass = require('create-react-class');
 const _ = require('lodash');
 const cx = require('classnames');
 const request = require('superagent');
+const { Meta } = require('vitreum/headtags');
 
 const Nav = require('naturalcrit/nav/nav.jsx');
 const Navbar = require('../../navbar/navbar.jsx');
-const PatreonNavItem = require('../../navbar/patreon.navitem.jsx');
 const IssueNavItem = require('../../navbar/issue.navitem.jsx');
 const RecentNavItem = require('../../navbar/recent.navitem.jsx').both;
 const AccountNavItem = require('../../navbar/account.navitem.jsx');
@@ -54,7 +55,6 @@ const HomePage = createClass({
 	renderNavbar : function(){
 		return <Navbar ver={this.props.ver}>
 			<Nav.section>
-				<PatreonNavItem />
 				<IssueNavItem />
 				<Nav.item newTab={true} href='/changelog' color='purple' icon='fa-file-text-o'>
 					Changelog
@@ -72,6 +72,7 @@ const HomePage = createClass({
 
 	render : function(){
 		return <div className='homePage page'>
+			<Meta name='google-site-verification' content='NwnAQSSJZzAT7N-p5MY6ydQ7Njm67dtbu73ZSyE5Fy4' />
 			{this.renderNavbar()}
 
 			<div className='content'>

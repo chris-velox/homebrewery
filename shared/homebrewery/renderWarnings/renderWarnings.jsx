@@ -1,4 +1,4 @@
-
+require('./renderWarnings.less');
 const React = require('react');
 const createClass = require('create-react-class');
 const _     = require('lodash');
@@ -25,10 +25,10 @@ const RenderWarnings = createClass({
 			if(!isChrome){
 				return <li key='chrome'>
 					<em>Built for Chrome </em> <br />
-					Other browsers do not support &nbsp;
-					<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/CSS/column-span#Browser_compatibility'>
-						key features
-					</a> this site uses.
+					Other browsers have not been tested for compatiblilty. If you
+					experience issues with your document not rendering or printing
+					properly, please try using the latest version of Chrome before
+					submitting a bug report.
 				</li>;
 			}
 		},
