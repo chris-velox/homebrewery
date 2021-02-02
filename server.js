@@ -1,12 +1,22 @@
 const _ = require('lodash');
 const jwt = require('jwt-simple');
+const expressStaticGzip = require('express-static-gzip');
 const express = require('express');
 const app = express();
 
 const homebrewApi = require('./server/homebrew.api.js');
 const GoogleActions = require('./server/googleActions.js');
 
-app.use(express.static(`${__dirname}/build`));
+// Serve brotli-compressed static files if available
+app.use('/', expressStaticGzip(`${__dirname}/build`, {
+	enableBrotli    : true,
+	orderPreference : ['br'],
+	index           : false
+}));
+
+process.chdir(__dirname);
+
+//app.use(express.static(`${__dirname}/build`));
 app.use(require('body-parser').json({ limit: '25mb' }));
 app.use(require('cookie-parser')());
 app.use(require('./server/forcessl.mw.js'));
@@ -44,13 +54,8 @@ app.use((req, res, next)=>{
 	return next();
 });
 
-
 app.use(homebrewApi);
-
 app.use(require('./server/admin.api.js'));
-
-//app.use('/user',require('./server/user.routes.js'));
-
 
 const HomebrewModel = require('./server/homebrew.model.js').model;
 const welcomeText = require('fs').readFileSync('./client/homebrew/pages/homePage/welcome_msg.md', 'utf8');
@@ -150,6 +155,10 @@ app.get('/share/:id', (req, res, next)=>{
 		const shareId = req.params.id.slice(-12);
 		GoogleActions.readFileMetadata(config.get('google_api_key'), googleId, shareId, 'share')
 		.then((brew)=>{
+			GoogleActions.increaseView(googleId, shareId, 'share', brew);
+			return brew;
+		})
+		.then((brew)=>{
 			req.brew = brew; //TODO Need to sanitize later
 			return next();
 		})
@@ -200,11 +209,6 @@ app.get('/print/:id', (req, res, next)=>{
 	}
 });
 
-app.get('/source/:id', (req, res)=>{
-
-});
-
-
 //Render the page
 //const render = require('.build/render');
 const templateFn = require('./client/template.js');
@@ -219,15 +223,15 @@ app.use((req, res)=>{
 		googleBrews : req.googleBrews,
 		account     : req.account,
 	};
-	templateFn('homebrew', props)
-		.then((page)=>{res.send(page);})
-		.catch((err)=>{
-			console.log(err);
-			return res.sendStatus(500);
-		});
+	templateFn('homebrew', title = req.brew ? req.brew.title : '', props)
+        .then((page)=>{ res.send(page); })
+        .catch((err)=>{
+        	console.log(err);
+        	return res.sendStatus(500);
+        });
 });
 
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || config.get('web_port') || 8000;
 app.listen(PORT);
 console.log(`server on port:${PORT}`);

@@ -1,11 +1,40 @@
 # changelog
 
+### Friday, 25/1/2021 - v2.10.7
+- Cover Page snippet now flips left-right page numbering.
+- Added instructions for [installing on a FreeBSD Jail](https://github.com/naturalcrit/homebrewery/blob/master/README.FREEBSD.md).
+- Fix for box-shadows breaking across columns. <br>(Thanks @G-Ambatte for all of these!)
+- Small user interface tweaks (Thanks @Ericsheid)
+
+### Friday, 02/1/2021 - v2.10.6
+- Fixed punctuation for usernames ending with 's' on the user page. (Thanks @AlexeySachkov)
+- Fixed server crashes due to excessive long lines in brews
+- Fixed "automated request" lockouts from Google
+
+### Friday, 18/12/2020 - v2.10.5
+- Brews now immediately save when transferring between Google Drive and Homebrewery storage.
+- Added confirmation popup to clarify the transfer process.
+- Brews transferred or deleted from Google will be found in your Google Drive trash.
+- Dependency updates.
+
+### Wednesday, 25/11/2020 - v2.10.4
+- Fixed Google Drive brews not saving metadata (view count, description, etc.) Note that we are still working on making published Google brews visible to the public when viewing your profile page.
+
+### Thursday, 22/10/2020 - v2.10.3
+- Fixed brews with broken code crashing the edit page when loaded (the "blue screen of death" bug).
+
+### Monday, 19/10/2020 - v2.10.2
+- Fixed issue with "recent" item links not updating when transferring between Google Drive.
+
 ### Monday, 12/10/2020 - v2.10.1
 - Fixed issue with users unable to create new brews
 - Fixing brews being lost when loaded via back button
 
 ### Wednesday, 07/10/2020 - v2.10.0
 - Google Drive integration -- Sign in with your Google account to link it with your Homebrewery profile. A new button in the Edit page will let you transfer your file to your personal Google Drive storage, and Google will keep a backup of each version! No more lost work surprises!
+
+```
+```
 
 ### Friday, 28/08/2020 - v2.9.2
 - Many dependency updates
@@ -44,20 +73,15 @@
 ### Saturday, 22/04/2017 - v2.7.4
 - Give ability to hide the render warning notification
 
-```
-```
-
 ### Friday, 03/03/2017 - v2.7.3
 - Increasing the range on the Partial Page Rendering for a quick-fix for it getting out of sync on long brews.
-
-
 
 ### Saturday, 18/02/2017 - v2.7.2
 - Adding ability to delete a brew from the user page, incase the user creates a brew that makes the edit page unrender-able. (re:309)
 
+\page
 
-
-### Thursday, 19/01/2017 - v2.7.0
+### Thursday, 19/01/2017 - v2.7.1
 - Fixed saving multiple authors and multiple systems on brew metadata (thanks u/PalaNolho re:282)
 - Adding in line highlight for new pages
 - Added in a simple brew lookup for admin
@@ -88,7 +112,6 @@
 - Added a table of contents snippet (thanks u/tullisar)
 - Added a multicolumn snippet
 
-\page
 ### Thursday, 01/12/2016
 - Added in a snippet for a split table
 - Added an account nav item to new page
@@ -97,6 +120,10 @@
 - Fixed the column rendering on the new user page. Really should have tested that better
 - Added a hover tooltip to fully read the brew description
 - Made the brew items take up only 25% allowing you to view more per row.
+
+
+```
+```
 
 ### Wednesday, 23/11/2016 - v2.5.0
 - Metadata can now be added to brews
@@ -107,6 +134,7 @@
 - Editing a brew in anyway while logged in will now add you to the list of authors
 - Added a new user page to see others published brews, as well as all of your own brews.
 - Added a new nav item for accessing your profile and logging in
+
 
 ### Monday, 14/11/2016
 - Updated snippet bar style
@@ -132,9 +160,6 @@
 - Fixed the noteblock overlapping into titles (thanks u/dsompura!)
 - Fixed a bad search route in the admin panel (thanks u/SnappyTom!)
 
-```
-```
-
 ### Friday, 29/07/2016 - v2.2.7
 - Adding in descriptive note blocks. (Thanks calculuschild!)
 
@@ -145,6 +170,9 @@
 - Added an id to each rendered page
 - Allows adding in hyperlinks to specific pages
 - Even works after you print to pdf!
+
+
+\page
 
 ### Tuesday, 07/06/2016 - v2.2.2
 - Fixed bug with new markdown lexer and aprser not working on print page
@@ -162,15 +190,16 @@
 - Finally added a syntax for doing spell lists. A bit in-depth about why this took so long. Essentially I'm running out of syntax to use in stardard Markdown. There are too many unique elements in the PHB-style to be mapped. I solved this earlier by stacking certain elements together (eg. an `<hr>` before a `blockquote` turns it into moster state block), but those are getting unweildly. I would like to simply wrap these in `div`s with classes, but unfortunately Markdown stops processing when within HTML blocks. To get around this I wrote my own override to the Markdown parser and lexer to process Markdown within a simple div class wrapper. This should open the door for more unique syntaxes in the future. Big step!
 - Override Ctrl+P (and cmd+P) to launch to the print page. Many people try to just print either the editing or share page to get a PDF. While this dones;t make much sense, I do get a ton of issues about it. So now if you try to do this, it'll just bring you imediately to the print page. Everybody wins!
 - The onboarding flow has also been confusing a few users (Homepage -> new -> save -> edit page). If you edit the Homepage text now, a Call to Action to save your work will pop-up.
-
-\page
-
 - Added a 'Recently Edited' and 'Recently Viewed' nav item to the edit and share page respectively. Each will remember the last 8 items you edited or viewed and when you viewed it. Makes use of the new title attribute of brews to easy navigatation.
 - Paragraphs now indent properly after lists (thanks u/slitjen!)
 
 ### Friday, 27/05/2016 - v2.0.6
 - Updated the issue template for (hopefully) better reporting
 - Added suggestion to use chrome while PDF printing
+
+
+```
+```
 
 ### Wednesday, 25/05/2016 -v2.0.5
 - The class table generators have the proper ability score improvement progression.
@@ -184,6 +213,8 @@
 - No longer server-side pre-render brews, just incase the user entered invalid HTML, it might crahsh the server
 - Bumped up the allowed entity size for extra-large brew (Thanks for reporting it dickboner93)
 - Added a little error box when a save fails with a custom link to reporting the issue on github.
+
+\page
 
 ### Saturday, 14/05/2016 - v2.0.0 (finally!)
 
@@ -282,7 +313,6 @@ Massive changelog incoming:
 * Fixed API issues that were causing the server to crash
 * Increased padding on table cells
 * Raw html now shows in view source
-
 
 ## v1.0.0 - Release
 

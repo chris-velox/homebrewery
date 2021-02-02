@@ -12,15 +12,14 @@ const execute = function(val, brew){
 	return val;
 };
 
-
-
 const Snippetbar = createClass({
 	getDefaultProps : function() {
 		return {
-			brew     : '',
-			onInject : ()=>{},
-			onToggle : ()=>{},
-			showmeta : false
+			brew           : '',
+			onInject       : ()=>{},
+			onToggle       : ()=>{},
+			showmeta       : false,
+			showMetaButton : true
 		};
 	},
 
@@ -41,13 +40,19 @@ const Snippetbar = createClass({
 		});
 	},
 
+	renderMetadataButton : function(){
+		if(!this.props.showMetaButton) return;
+		return <div className={cx('snippetBarButton', 'toggleMeta', { selected: this.props.showmeta })}
+			onClick={this.props.onToggle}>
+			<i className='fa fa-info-circle' />
+			<span className='groupName'>Properties</span>
+		</div>;
+	},
+
 	render : function(){
 		return <div className='snippetBar'>
 			{this.renderSnippetGroups()}
-			<div className={cx('toggleMeta', { selected: this.props.showmeta })}
-				onClick={this.props.onToggle}>
-				<i className='fa fa-bars' />
-			</div>
+			{this.renderMetadataButton()}
 		</div>;
 	}
 });
@@ -82,7 +87,7 @@ const SnippetGroup = createClass({
 	},
 
 	render : function(){
-		return <div className='snippetGroup'>
+		return <div className='snippetGroup snippetBarButton'>
 			<div className='text'>
 				<i className={`fa fa-fw ${this.props.icon}`} />
 				<span className='groupName'>{this.props.groupName}</span>
